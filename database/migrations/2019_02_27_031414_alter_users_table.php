@@ -16,6 +16,8 @@ class AlterUsersTable extends Migration
         //create new field username to table user
         Schema::table('users', function(Blueprint $table){
             $table->string('username')->unique()->after('id');
+            $table->enum('active', ['Y', 'N'])->defaut('Y')->after('password');
+            $table->integer('user_creator')->unsigned()->nullable();
         });
     }
 
