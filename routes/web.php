@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * Test login page
+ */
+Route::get('/login-html', function(){
+    return view('template.login');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
