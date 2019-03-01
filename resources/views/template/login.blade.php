@@ -27,7 +27,7 @@
               <img src="assets/img/stisla-fill.svg" alt="logo" width="70" class="shadow-light rounded-circle">
             </div>
 
-            <div class="card">
+            <div class="card mb-4">
                 <!-- <div class="card-header">
                     <h4>Login</h4>
                 </div> -->
@@ -70,7 +70,7 @@
                     </button>
                   </div>
                 </form>
-                <div class="text-center mt-4 mb-3">
+                <div class="text-center mt-1 mb-1">
                     <div class="text-job text-muted">
                         Don't have an account? <a href="auth-register.html">Register</a>
                     </div>
@@ -97,7 +97,7 @@
             <!-- <div class="mt-5 text-muted text-center">
               Don't have an account? <a href="auth-register.html">Create One</a>
             </div> -->
-            <div class="simple-footer" style="margin:5px 0;">
+            <div class="simple-footer mt-1 mb-1">
               <small>Copyright &copy; Stisla 2018</small>
             </div>
           </div>
@@ -107,20 +107,20 @@
   </div>
 
   <!-- General JS Scripts -->
-  <script src="{{url('assets/modules/jquery.min.js')}}"></script>
-  <script src="{{url('assets/modules/popper.js')}}"></script>
-  <script src="{{url('assets/modules/tooltip.js')}}"></script>
-  <script src="{{url('assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{url('assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
-  <script src="{{url('assets/modules/moment.min.js')}}"></script>
-  <script src="{{url('assets/js/stisla.js')}}"></script>
+  <script src="{{asset('assets/modules/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/modules/popper.js')}}"></script>
+  <script src="{{asset('assets/modules/tooltip.js')}}"></script>
+  <script src="{{asset('assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
+  <script src="{{asset('assets/modules/moment.min.js')}}"></script>
+  <script src="{{asset('assets/js/stisla.js')}}"></script>
   
   <!-- JS Libraies -->
 
   <!-- Page Specific JS File -->
   
   <!-- Template JS File -->
-  <script src="{{url('assets/js/scripts.js')}}"></script>
-  <script src="{{url('assets/js/custom.js')}}"></script>
+  <script src="{{asset('assets/js/scripts.js')}}"></script>
+  <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
 </html>
