@@ -57,7 +57,7 @@
         </form>
         <div class="text-center mt-1 mb-1">
             <div class="text-job text-muted">
-                Don't have an account? <a href="auth-register.html">Register</a>
+                Don't have an account? <a href="{{route('register')}}">Register</a>
             </div>
         </div>
     </div>
