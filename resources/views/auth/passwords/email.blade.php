@@ -1,7 +1,10 @@
+<!-- Extending template views/auth/layout.blade.php-->
 @extends('auth.layout')
+<!-- Include component into form section -->
 @section('form')
-    <!-- start card component -->
-    <div class="card mb-4">
+<!-- start card component -->
+<div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+    <div class="card mb-3">
         <div class="card-header">
             <h4>{{__('Reset Password')}}</h4>
         </div>
@@ -12,7 +15,6 @@
                     {{ session('status') }}
                 </div>
             @endif
-            <!-- End of Displaying alert on condition -->
             <!-- Start of Form reset password -->
             <form method="POST" action="{{ route('password.email') }}" class="needs-validation" novalidate="">
                 @csrf
@@ -41,4 +43,5 @@
             </div>
         </div>
     </div>
+</div>    
 @endsection
