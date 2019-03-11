@@ -13,10 +13,10 @@ class UsersTableSeeder extends Seeder
     {
         //create user dump
         \App\User::create([
-            'name'=>'Priatmoko',
-            'email'=>'priatmoko.informatics@gmail.com',
-            'username'=>'masterpis',
-            'password'=>bcrypt('admin')
+            'name'=>'Laravel Stisla',
+            'email'=>'stisla@laravel.adstis',
+            'username'=>'adstis',
+            'password'=>bcrypt('admin@stisla')
         ]);
     }
 }
