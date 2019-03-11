@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+/**
+ * Grouping all the route that need authentication to access it
+ */
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('profile', 'Admin\Profile\IndexController@index')->name('profile');
+});
