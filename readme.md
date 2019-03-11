@@ -1,3 +1,7 @@
+<p align="center"><img src="https://avatars2.githubusercontent.com/u/45754626?s=75&v=4"></p>
+Implements Stisla Admin panel in laravel.
+original source <a target="_blank" href="https://getstisla.com">Stisla</a>
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
