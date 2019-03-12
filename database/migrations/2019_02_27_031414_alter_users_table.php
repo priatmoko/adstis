@@ -18,7 +18,7 @@ class AlterUsersTable extends Migration
             //add username, enable login using username beside email
             $table->string('username')->unique()->after('id');
             //add avatar, store photo of user
-            $table->string('avatar')->unique()->after('password');
+            $table->string('avatar')->unique()->after('password')->nullable();
             //Add field active for feature Enable and disable user
             $table->enum('active', ['Y', 'N'])->defaut('Y')->after('avatar');
             //add user creator, recording user initiator
