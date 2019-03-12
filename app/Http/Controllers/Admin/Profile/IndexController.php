@@ -18,6 +18,7 @@ class IndexController extends Controller
     public function index()
     {
         $breadcrumb = ['User profile'=>''];
+        $title = 'User Profile';
         return view('Admin.Profile.index')
                 ->with('breadcrumb', $breadcrumb);
     }
