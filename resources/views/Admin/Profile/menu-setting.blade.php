@@ -1,0 +1,20 @@
+@component('layouts.elements.others.card',
+    ['title'=>'Jump To'])
+    <div class="text-center">
+        <img alt="image" 
+            src="{{asset('assets/img/avatar/avatar-1.png')}}" 
+            class="rounded-circle author-box-picture" 
+            style="width:100px;">
+        <div class="clearfix"></div>
+        <h5>{{\Auth::user()->name}}</h5>
+        {{'username : '.\Auth::user()->username.' email : '.\Auth::user()->email}}
+    </div>
+    <div class="mt-3">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+            <li class="nav-item"><a href="#" class="nav-link active">Setting</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Password</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Theme</a></li>
+        </ul>
+    </div>
+@endcomponent
