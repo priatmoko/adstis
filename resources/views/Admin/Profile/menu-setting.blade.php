@@ -11,8 +11,8 @@
     </div>
     <div class="mt-3">
         <ul class="nav nav-pills flex-column">
-            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active">Setting</a></li>
+            <li class="nav-item"><a href="{{route('profile')}}" class="nav-link">Profile</a></li>
+            <li class="nav-item"><a href="{{route('profile-setting')}}" class="nav-link active">Setting</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Password</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Theme</a></li>
         </ul>

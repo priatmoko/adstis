@@ -1,0 +1,4 @@
+//initial 
+var fsettingInit = function(){
+    
+}
