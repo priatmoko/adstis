@@ -3,7 +3,7 @@
     @component('layouts.elements.others.with-header', 
         ['title'=>'User Profile',
         'subtitle'=>'User Profile',
-        'desc'=>'Page for managing user profile',
+        'desc'=>'Page for displaying detail of user',
         'breadcrumb'=> (isset($breadcrumb)?$breadcrumb:'')])
 
         @component('layouts.elements.others.card',
@@ -11,7 +11,7 @@
             
             <div class="text-center">
                 <img alt="image" 
-                    src="assets/img/avatar/avatar-1.png" 
+                    src="{{asset('assets/img/avatar/avatar-1.png')}}" 
                     class="rounded-circle author-box-picture" 
                     style="width:100px;">
                 <div class="clearfix"></div>

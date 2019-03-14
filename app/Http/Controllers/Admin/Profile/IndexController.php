@@ -22,4 +22,15 @@ class IndexController extends Controller
         return view('Admin.Profile.index')
                 ->with('breadcrumb', $breadcrumb);
     }
+    /**
+     * Displaying form user profile setting
+     * @return void
+     */
+    public function setting()
+    {
+        $breadcrumb = ['User profile'=>route('profile'), 'Setting'=>''];
+        $title = 'Profile Setting';
+        return view('Admin.Profile.setting')
+                ->with('breadcrumb', $breadcrumb);
+    }
 }
