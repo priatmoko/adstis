@@ -20,7 +20,7 @@
                     <input type="text" id="name" name="name" 
                         class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" 
                         required 
-                        value="{{\Auth::user()->name}}">
+                        value="{{\Auth::user()->name}}" tabindex=1>
                     <div class="invalid-feedback">
                         @if ($errors->has('email'))
                             {{ $errors->first('name') }}</strong>
@@ -46,8 +46,7 @@
                 <div class="col-sm-6 col-md-9">
                     <input type="text" id="username" name="username"  
                         class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" 
-                        required 
-                        value="{{\Auth::user()->username}}">
+                        required value="{{\Auth::user()->username}}"  tabindex=2>
                     <div class="invalid-feedback">
                         @if ($errors->has('username'))
                             {{ $errors->first('username') }}</strong>
@@ -71,7 +70,9 @@
                         </a>
                 </label>
                 <div class="col-sm-6 col-md-9">
-                    <input type="email" id="email" name="email"  class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" require value="{{\Auth::user()->email}}">
+                    <input type="email" id="email" name="email" 
+                        class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" required 
+                        value="{{\Auth::user()->email}}" tabindex=3/>
                     <div class="invalid-feedback">
                         @if ($errors->has('email'))
                             {{ $errors->first('email') }}</strong>
@@ -96,14 +97,14 @@
                 </label>
                 <div class="col-sm-6 col-md-9">
                     <div class="custom-file">
-                        <input type="file" name="avatar" class="custom-file-input" id="avatar">
+                        <input type="file" name="avatar" class="custom-file-input" id="avatar" tabindex=4>
                         <label class="custom-file-label">Choose File</label>
                     </div>
                 </div>
             </div>
             @slot('footer')
                 <div class="float-md-right">
-                    <button type="submit" class="btn btn-icon icon-right btn-outline-primary"> <i class="fa fa-save"></i> &nbsp; Save</button>
+                    <button type="submit" class="btn btn-icon icon-right btn-outline-primary"  tabindex=5> <i class="fa fa-save"></i> &nbsp; Save</button>
                 </div>
             @endslot
     @endcomponent

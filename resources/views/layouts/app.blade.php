@@ -14,8 +14,20 @@
         <!-- Template CSS -->
         <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+        <link rel="stylesheet" href="{{asset('css/loader.css')}}">
     </head>
     <body>
+        <div class="preloader"  style='display:none;'>
+            <div class="loader">
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div>
+            </div>
+            <div class="loader-msg" style='display:none;'>
+                <div class="loader-msg-content"></div>
+                <div class="loader-msg-dotted"></div>
+            </div>
+        </div>
         <div id="app">
             @yield('content')
         </div>        
@@ -32,6 +44,7 @@
         <!-- Template JS File -->
         <script src="{{asset('assets/js/scripts.js')}}"></script>
         <script src="{{asset('assets/js/custom.js')}}"></script>
+        <script src="{{asset('js/sLoader.js')}}"></script>
         @yield('scripts')
     </body>
 </html>
