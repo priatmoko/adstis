@@ -9,8 +9,8 @@ var initProfile = function(){
  * save the profile
  */
 var saveProfile = function(e){
-    if ($('#user-profile').bootValidate()===false){
+    if ($('#user-profile').postValidate()===false){
         return false;
     }
-    
+    $('#user-profile').postAjax();
 }

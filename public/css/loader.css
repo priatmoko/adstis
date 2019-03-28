@@ -5,7 +5,7 @@
     left: 0;
     position: fixed;
     z-index: 99999;
-    background: rgba(225, 225, 255, 1);
+    background: rgba(225, 225, 255, 0.8);
 }
 .preloader .loader {
     position: absolute;

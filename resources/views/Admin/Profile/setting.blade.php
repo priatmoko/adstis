@@ -17,7 +17,7 @@
     @endcomponent
 @endsection    
 @section('scripts')
-    <script src="{{asset('js/bootValidate.js')}}"></script>
+    <script src="{{asset('js/postAjax.js')}}"></script>
     <script src="{{asset('assets/Admin/Profile/setting.js')}}"></script>
     <script>
         //init setting

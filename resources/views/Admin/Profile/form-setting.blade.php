@@ -1,10 +1,10 @@
-<form id="user-profile" method='POST' novalidate>
+<form id="user-profile" method='POST' novalidate action="{{url('profile/store')}}">
     @component('layouts.elements.others.card',
         ['title'=>'User Profile Setting'])
             @csrf
             <p class="text-muted">General settings such as name, photo profile, etc</p>
             <div class="form-group row align-items-center">
-                <label for="name" class="form-control-label col-sm-3">
+                <label for="name" class="form-control-label col-md-3">
                     Name
                     <a href="javascript:;"
                         data-html="true" 
@@ -16,7 +16,7 @@
                         <i class="far fa-question-circle"></i>
                         </a>
                 </label>
-                <div class="col-sm-6 col-md-9">
+                <div class="col-md-9">
                     <input type="text" id="name" name="name" 
                         class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" 
                         required 
@@ -31,8 +31,8 @@
                 </div>
             </div>
             <div class="form-group row align-items-center">
-                <label for="site-title" class="form-control-label col-sm-3">
-                    Username
+                <label for="site-title" class="form-control-label col-md-3">
+                    Username / ID
                     <a href="javascript:;"
                         data-html="true" 
                         data-toggle="popover" 
@@ -43,10 +43,10 @@
                         <i class="far fa-question-circle"></i>
                         </a>
                 </label>
-                <div class="col-sm-6 col-md-9">
+                <div class="col-md-6">
                     <input type="text" id="username" name="username"  
                         class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" 
-                        required value="{{\Auth::user()->username}}"  tabindex=2>
+                        required value="{{\Auth::user()->username}}"  tabindex=2 readonly/>
                     <div class="invalid-feedback">
                         @if ($errors->has('username'))
                             {{ $errors->first('username') }}</strong>
@@ -55,9 +55,21 @@
                         @endif
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <input type="text" id="id" name="id"  
+                        class="form-control {{ $errors->has('id') ? ' is-invalid' : '' }} text-center" 
+                        required value="{{\Auth::user()->id}}"  tabindex=2 readonly/>
+                    <div class="invalid-feedback">
+                        @if ($errors->has('id'))
+                            {{ $errors->first('id') }}</strong>
+                        @else
+                            {{__('Please fill in your username')}}
+                        @endif
+                    </div>
+                </div>
             </div>
             <div class="form-group row align-items-center">
-                <label for="site-title" class="form-control-label col-sm-3">
+                <label for="site-title" class="form-control-label col-md-3">
                     Email Address
                     <a href="javascript:;"
                         data-html="true" 
@@ -69,7 +81,7 @@
                         <i class="far fa-question-circle"></i>
                         </a>
                 </label>
-                <div class="col-sm-6 col-md-9">
+                <div class="col-md-9">
                     <input type="email" id="email" name="email" 
                         class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" required 
                         value="{{\Auth::user()->email}}" tabindex=3/>
@@ -83,7 +95,7 @@
                 </div>
             </div>
             <div class="form-group row align-items-center">
-                <label for="site-title" class="form-control-label col-sm-3">
+                <label for="site-title" class="form-control-label col-md-3">
                     Avatar
                     <a href="javascript:;"
                         data-html="true" 
@@ -95,7 +107,7 @@
                         <i class="far fa-question-circle"></i>
                         </a>
                 </label>
-                <div class="col-sm-6 col-md-9">
+                <div class="col-md-9">
                     <div class="custom-file">
                         <input type="file" name="avatar" class="custom-file-input" id="avatar" tabindex=4>
                         <label class="custom-file-label">Choose File</label>
