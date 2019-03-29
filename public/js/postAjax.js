@@ -1,4 +1,49 @@
 /**
+ * general POST with file upload ajax Request
+ */
+$.fn.postFile = function(options){
+    //Defines the variable
+    var defaults = {success : function(){}, error : function(){}, ext : []};
+    var options = $.extend(defaults, options);
+    //init form file
+    var formData = new FormData(this[0]);
+    if (options.ext.length>0){
+        fileValidation(this, options.ext);
+    }
+    return false;
+    // make post ajax call
+    $.ajax({
+        url :this[0].action,
+        type :'POST',
+        data : formData,
+        dataType : 'json',
+        contentType: false,
+        processData: false,
+        cache: false,
+        mimeTypes: "multipart/form-data",
+        beforeSend : function(){
+            sLoader('show');
+        
+        },
+        success : function(r){
+            sLoader('hide');
+            if ($.isFunction(options.success)) {
+                options.success.call(this, r);
+            }
+            
+        },
+        error : function(xhr){
+            console.log(xhr);
+            catchError(xhr);
+            if ($.isFunction(options.error)) {
+                options.error.call(this, xhr);
+            }                       
+        }
+    });
+
+}
+
+/**
  * General POST ajax request
  * @param string id
  * @return void
@@ -84,7 +129,9 @@ $.fn.postValidate = function(){
     });
     return result;
 }
-
+/**
+ * Catch the validation from form validation in PHP
+ */
 var catchValidation = function(err){
     if (typeof err.responseJSON.errors != 'undefined'){
         $.each(err.responseJSON.errors, function(i, v){
@@ -92,4 +139,30 @@ var catchValidation = function(err){
             document.getElementById(i).nextElementSibling.innerHTML=v.join(',');
         });
     }
+}
+
+var fileValidation = function(obj, allowedExt){
+    obj[0].classList.remove('was-validated');
+    var file;
+    var ext;
+    //force rule into uppercase
+    var exts = new Array;
+    for(il=0; il<allowedExt.length; il++){
+        exts.push(allowedExt[il].toUpperCase());
+    }
+    //looping the rules
+    for(i=0; i<obj[0].length; i++){
+        if (obj[0][i].type=='file' && obj[0][i].value!=""){
+            file =obj[0][i].value;
+            ext = file.split('.');
+            if (exts.indexOf($.trim(ext[ext.length-1]).toUpperCase()) < 0  ){
+                obj[0][i].classList.add('is-invalid');
+                console.log(obj[0][i]);
+                return false;
+            }
+        }
+    }
+    obj[0].classList.add('was-validate');
+    obj[0].checkValidity()
+    return true;
 }

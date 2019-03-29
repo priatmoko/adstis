@@ -12,7 +12,8 @@ var saveProfile = function(e){
     if ($('#user-profile').postValidate()===false){
         return false;
     }
-    $('#user-profile').postAjax({
+    $('#user-profile').postFile({
+        ext : ['pdf', 'jpg'],
         success : function(r){
             iziToast.success({
                 title: 'INFO !',
@@ -21,4 +22,13 @@ var saveProfile = function(e){
               });
         }
     });
+    // $('#user-profile').postAjax({
+    //     success : function(r){
+    //         iziToast.success({
+    //             title: 'INFO !',
+    //             message: 'Operation success, the changing has been saved',
+    //             position: 'topRight'
+    //           });
+    //     }
+    // });
 }
