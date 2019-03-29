@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
         <link rel="stylesheet" href="{{asset('css/loader.css')}}">
+        @yield('css')
     </head>
     <body>
         <div class="preloader"  style='display:none;'>

@@ -3,11 +3,13 @@
  * @param string id
  * @return void
  */
-$.fn.postAjax = function(id){
+$.fn.postAjax = function(options, id){
     // defines the variable
     var obj; 
     var data;
     var url;
+    var defaults = {success : function(){}, error : function(){}};
+    var options = $.extend(defaults, options);
     //validate type of selector
     if (typeof id !='undefined'){
         obj = $('#'+id);
@@ -30,11 +32,17 @@ $.fn.postAjax = function(id){
         },
         success : function(r){
             sLoader('hide');
-            console.log(r);
+            if ($.isFunction(options.success)) {
+                options.success.call(this, r);
+            }
+            
         },
         error : function(xhr){
             console.log(xhr);
-            catchError(xhr);                       
+            catchError(xhr);
+            if ($.isFunction(options.error)) {
+                options.error.call(this, xhr);
+            }                       
         }
     });
 } 

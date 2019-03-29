@@ -17,10 +17,15 @@
     @endcomponent
 @endsection    
 @section('scripts')
+    <script src="{{asset('assets/modules/izitoast/js/iziToast.min.js')}}"></script>
     <script src="{{asset('js/postAjax.js')}}"></script>
     <script src="{{asset('assets/Admin/Profile/setting.js')}}"></script>
     <script>
         //init setting
         initProfile();
     </script>
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="{{asset('assets/modules/izitoast/css/iziToast.min.css')}}" />
 @endsection
