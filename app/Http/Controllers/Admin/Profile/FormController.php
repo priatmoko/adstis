@@ -21,7 +21,8 @@ class FormController extends Controller
             'name'=>'required|max:191',
             'id'=>'required',
             'username'=>'required',
-            'email'=>'required|email']);
+            'email'=>'required|email',
+            'avatar'=>'image']);
         //check validataion result    
         if ($validation->fails()) 
             return response()->json(['errors'=>$validation->errors()], 422);

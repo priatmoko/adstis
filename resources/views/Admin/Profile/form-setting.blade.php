@@ -108,10 +108,8 @@
                         </a>
                 </label>
                 <div class="col-md-9">
-                    <div class="custom-file">
-                        <input type="file" name="avatar" class="custom-file-input" id="avatar" tabindex=4>
-                        <label class="custom-file-label">Choose File</label>
-                    </div>
+                    <input type="file" name="avatar" class="form-control" id="avatar" tabindex=4>
+                    <div class="invalid-feedback"></div>
                 </div>
             </div>
             @slot('footer')

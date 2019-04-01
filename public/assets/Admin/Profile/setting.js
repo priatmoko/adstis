@@ -13,7 +13,7 @@ var saveProfile = function(e){
         return false;
     }
     $('#user-profile').postFile({
-        ext : ['pdf', 'jpg'],
+        // ext : ['pdf', 'jpg'],
         success : function(r){
             iziToast.success({
                 title: 'INFO !',

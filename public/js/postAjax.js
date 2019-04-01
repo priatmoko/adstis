@@ -3,14 +3,14 @@
  */
 $.fn.postFile = function(options){
     //Defines the variable
-    var defaults = {success : function(){}, error : function(){}, ext : []};
+    var defaults = {success : function(){}, error : function(){}, ext : [], filesize:''};
     var options = $.extend(defaults, options);
     //init form file
     var formData = new FormData(this[0]);
     if (options.ext.length>0){
-        fileValidation(this, options.ext);
+        if (fileValidation(this, options)===false)
+            return false;
     }
-    return false;
     // make post ajax call
     $.ajax({
         url :this[0].action,
@@ -32,11 +32,10 @@ $.fn.postFile = function(options){
             }
             
         },
-        error : function(xhr){
-            console.log(xhr);
-            catchError(xhr);
+        error : function(xhr, status, error){
+            catchError(xhr, status, error);
             if ($.isFunction(options.error)) {
-                options.error.call(this, xhr);
+                options.error.call(this, xhr, status, error);
             }                       
         }
     });
@@ -96,14 +95,14 @@ $.fn.postAjax = function(options, id){
  * @param {void} err 
  * @return void
  */
-var catchError = function(err){
-    console.log(err);
+var catchError = function(err, status, error){
     var message = '';
-    message += err.responseJSON.errors+' \n';
-    message += err.status+' \n '+err.statusText+' \n ';
-    message += err.responseJSON.exception+' \n ';
-    message += err.responseJSON.message+' \n\n ';
-    message += JSON.stringify(err.responseJSON.trace, null, '\t');
+    message += status+' : '+error+' \n ';
+    if (typeof err !='undefined' && err.hasOwnProperty('responseJSON')){
+        message += err.responseJSON.exception+' \n ';
+        message += err.responseJSON.message+' \n\n ';
+        message += JSON.stringify(err.responseJSON.trace, null, '\t');
+    }
     alert(message);
 }
 /**
@@ -141,24 +140,42 @@ var catchValidation = function(err){
     }
 }
 
-var fileValidation = function(obj, allowedExt){
+var fileValidation = function(obj, options){
     obj[0].classList.remove('was-validated');
     var file;
     var ext;
+    var errMsg = 'Invalid file format, file extension allowed : ';
     //force rule into uppercase
     var exts = new Array;
-    for(il=0; il<allowedExt.length; il++){
-        exts.push(allowedExt[il].toUpperCase());
+    for(il=0; il<options.ext.length; il++){
+        exts.push(options.ext[il].toUpperCase());
     }
     //looping the rules
     for(i=0; i<obj[0].length; i++){
+        //validate element type file and the value is not empty
         if (obj[0][i].type=='file' && obj[0][i].value!=""){
+            //read the file extension
             file =obj[0][i].value;
             ext = file.split('.');
+            //validate the uploaded file extension is registered or not on option
             if (exts.indexOf($.trim(ext[ext.length-1]).toUpperCase()) < 0  ){
-                obj[0][i].classList.add('is-invalid');
-                console.log(obj[0][i]);
+                //validate the class is-invalid is exist or not
+                if (obj[0][i].classList.contains('is-invalid') === false)
+                    obj[0][i].classList.add('is-invalid');
+                //assign error message
+                if (obj[0][i].nextElementSibling.classList.contains('invalid-feedback'))
+                    obj[0][i].nextElementSibling.innerHTML = errMsg+exts.join(',');
+                //focus on element
+                obj[0][i].focus();
+                //return false;
                 return false;
+            }else if (exts.indexOf($.trim(ext[ext.length-1]).toUpperCase()) > 0){
+                //remove the invalid for passing rule
+                if (obj[0][i].classList.contains('is-invalid') === true)
+                    obj[0][i].classList.remove('is-invalid');
+                //remove the invalid message for passing rule
+                if (obj[0][i].nextElementSibling.classList.contains('invalid-feedback'))
+                    obj[0][i].nextElementSibling.innerHTML = '';    
             }
         }
     }
