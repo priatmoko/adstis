@@ -9,12 +9,14 @@ var initProfile = function(){
  * save the profile
  */
 var saveProfile = function(e){
-    if ($('#user-profile').postValidate()===false){
-        return false;
-    }
+    // if ($('#user-profile').postValidate()===false){
+    //     return false;
+    // }
     $('#user-profile').postFile({
-        // ext : ['pdf', 'jpg'],
+        ext : ['png', 'jpg'],
+        maxsize : 1024,
         success : function(r){
+            console.log(r);
             iziToast.success({
                 title: 'INFO !',
                 message: 'Operation success, the changing has been saved',

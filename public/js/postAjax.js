@@ -3,7 +3,7 @@
  */
 $.fn.postFile = function(options){
     //Defines the variable
-    var defaults = {success : function(){}, error : function(){}, ext : [], filesize:''};
+    var defaults = {success : function(){}, error : function(){}, ext : [], maxsize:''};
     var options = $.extend(defaults, options);
     //init form file
     var formData = new FormData(this[0]);
@@ -33,6 +33,7 @@ $.fn.postFile = function(options){
             
         },
         error : function(xhr, status, error){
+            sLoader('hide');
             catchError(xhr, status, error);
             if ($.isFunction(options.error)) {
                 options.error.call(this, xhr, status, error);
@@ -96,14 +97,21 @@ $.fn.postAjax = function(options, id){
  * @return void
  */
 var catchError = function(err, status, error){
-    var message = '';
-    message += status+' : '+error+' \n ';
-    if (typeof err !='undefined' && err.hasOwnProperty('responseJSON')){
-        message += err.responseJSON.exception+' \n ';
-        message += err.responseJSON.message+' \n\n ';
-        message += JSON.stringify(err.responseJSON.trace, null, '\t');
+    console.log(status);
+    console.log(error);
+    console.log(err);
+    if (err.status==422){
+        catchValidation(err);
+    }else{
+        var message = '';
+        message += status+' : '+error+' \n ';
+        if (typeof err !='undefined' && err.hasOwnProperty('responseJSON')){
+            message += err.responseJSON.exception+' \n ';
+            message += err.responseJSON.message+' \n\n ';
+            message += JSON.stringify(err.responseJSON.trace, null, '\t');
+        }
+        alert(message);
     }
-    alert(message);
 }
 /**
  * Form validation
@@ -132,7 +140,7 @@ $.fn.postValidate = function(){
  * Catch the validation from form validation in PHP
  */
 var catchValidation = function(err){
-    if (typeof err.responseJSON.errors != 'undefined'){
+    if (err.hasOwnProperty('responseJSON')){
         $.each(err.responseJSON.errors, function(i, v){
             document.getElementById(i).classList.add('is-invalid');
             document.getElementById(i).nextElementSibling.innerHTML=v.join(',');
@@ -144,6 +152,7 @@ var fileValidation = function(obj, options){
     obj[0].classList.remove('was-validated');
     var file;
     var ext;
+    var filesize;
     var errMsg = 'Invalid file format, file extension allowed : ';
     //force rule into uppercase
     var exts = new Array;
@@ -170,12 +179,26 @@ var fileValidation = function(obj, options){
                 //return false;
                 return false;
             }else if (exts.indexOf($.trim(ext[ext.length-1]).toUpperCase()) > 0){
-                //remove the invalid for passing rule
-                if (obj[0][i].classList.contains('is-invalid') === true)
+                //file size validation
+                filesize = obj[0][i].files[0].size/(1024);
+                if (filesize > options.maxsize){
+                    if (obj[0][i].classList.contains('is-invalid') === false)
+                    obj[0][i].classList.add('is-invalid');
+                    //assign error message
+                    if (obj[0][i].nextElementSibling.classList.contains('invalid-feedback'))
+                        obj[0][i].nextElementSibling.innerHTML = 'Maximum file size is '+options.maxsize+' KB, the uploaded file size is '+Math.round(filesize)+' KB';
+                    //focus on element
+                    obj[0][i].focus();
+                    //return false;
+                    return false;
+                }else{
+                    //remove the invalid for passing rule
+                    if (obj[0][i].classList.contains('is-invalid') === true)
                     obj[0][i].classList.remove('is-invalid');
-                //remove the invalid message for passing rule
-                if (obj[0][i].nextElementSibling.classList.contains('invalid-feedback'))
-                    obj[0][i].nextElementSibling.innerHTML = '';    
+                    //remove the invalid message for passing rule
+                    if (obj[0][i].nextElementSibling.classList.contains('invalid-feedback'))
+                        obj[0][i].nextElementSibling.innerHTML = '';
+                }
             }
         }
     }
