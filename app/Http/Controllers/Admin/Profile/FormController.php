@@ -31,17 +31,33 @@ class FormController extends Controller
         if ($r->has('avatar')){    
             $file = $r->file('avatar');
             $filename = $r->input('username').'.'.$file->extension();
-            $path = public_path('\files\admin\users\\');
+            $path = public_path('files/admin/users/');
             $this->moveFile($file, $filename, $path);
         }    
         //passed input continue to run update operation    
         $user = User::find($r->input('id'));
         $user->name = $r->input('name');
         $user->email = $r->input('email');
+
         if (isset($filename) && $filename!="")
             $user->avatar = $filename;
-        if ($user->save())
-            return response()->json(['data'=>'y']);
+
+        if ($user->save()){
+            
+            if (isset($filename) && $filename!=""){
+                $data['avatar']=$filename; 
+                \Image::make($path.$filename)
+                    ->fit(200)
+                    ->save($path.'thumb-'.$filename);
+                $data['image']=$this->toBase64($path.'thumb-'.$filename);
+            }
+            $response =['status'=>'success',
+                'data'=>(isset($data)?$data:''), 
+                'message'=>''];
+            return response()->json($response, 200);
+        }
+        return response()->json(['status'=>'error', 'message'=>''], 200);
+            
     }
     /**
      * Upload file attach
@@ -62,5 +78,12 @@ class FormController extends Controller
             $file->move($path, $filename);
                     
         }
+    }
+    private function toBase64($image_location) {
+        $image_path = $image_location;
+        $image_type = pathinfo($image_path, PATHINFO_EXTENSION);
+        $image_data = file_get_contents($image_path);
+        $image_base64 = 'data:image/' . $image_type . ';base64,' . base64_encode($image_data);
+        return $image_base64;
     }
 }

@@ -82,9 +82,9 @@ $.fn.postAjax = function(options, id){
             }
             
         },
-        error : function(xhr){
-            console.log(xhr);
-            catchError(xhr);
+        error : function(xhr, status, error){
+            sLoader('hide');
+            catchError(xhr, status, error);
             if ($.isFunction(options.error)) {
                 options.error.call(this, xhr);
             }                       
@@ -104,11 +104,20 @@ var catchError = function(err, status, error){
         catchValidation(err);
     }else{
         var message = '';
-        message += status+' : '+error+' \n ';
+        message +=error+' ('+status+') \n\n ';
         if (typeof err !='undefined' && err.hasOwnProperty('responseJSON')){
-            message += err.responseJSON.exception+' \n ';
-            message += err.responseJSON.message+' \n\n ';
-            message += JSON.stringify(err.responseJSON.trace, null, '\t');
+            if (err.responseJSON.hasOwnProperty('exception'))
+                message+='Exception : '+err.responseJSON.exception+' \n ';
+            if (err.responseJSON.hasOwnProperty('file'))
+                message+='File : '+err.responseJSON.file+' \n ';
+            if (err.responseJSON.hasOwnProperty('line'))
+                message+='Line : '+err.responseJSON.line+' \n ';
+            if (err.responseJSON.hasOwnProperty('message'))
+                message+='Message : '+err.responseJSON.message+' \n\n ';
+            if (err.hasOwnProperty('responseText'))
+                message+='Response Text : '+err.responseText+' \n\n ';
+            if (err.hasOwnProperty('trace'))
+                message+='Trace : '+JSON.stringify(err.responseJSON.trace, null, '\t');
         }
         alert(message);
     }
