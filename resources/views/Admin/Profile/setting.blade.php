@@ -11,7 +11,14 @@
                     @include('Admin.Profile.menu-setting')
                 </div>
                 <div class="col-md-8">
-                    @include('Admin.Profile.form-setting')
+                    <div class="tab-content no-padding" id="user-tabs">
+                        <div class="tab-pane fade show active" id="setting-user" role="tabpanel" aria-labelledby="Setting User Profile">
+                            @include('Admin.Profile.form-setting')
+                        </div>
+                        <div class="tab-pane fade" id="setting-password" role="tabpanel" aria-labelledby="Setting User Password">
+                            @include('Admin.Profile.form-password')
+                        </div>
+                    </div>
                 </div>
             </div>
     @endcomponent

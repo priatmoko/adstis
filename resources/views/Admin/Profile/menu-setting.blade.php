@@ -13,8 +13,24 @@
     <div class="mt-3">
         <ul class="nav nav-pills flex-column">
             <li class="nav-item"><a href="{{route('profile')}}" class="nav-link">Profile</a></li>
-            <li class="nav-item"><a href="{{route('profile-setting')}}" class="nav-link active">Setting</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Password</a></li>
+            <li class="nav-item">
+                <!-- <a href="{{route('profile-setting')}}" class="nav-link active">Setting</a> -->
+                <a id="tab-setting" 
+                    data-toggle="tab" 
+                    href="#setting-user" 
+                    role="tab" 
+                    aria-controls="Setting User Profile" 
+                    aria-selected="true"
+                    class="nav-link active">Setting</a>
+            </li>
+            <li class="nav-item">
+                <a id="tab-password" 
+                    data-toggle="tab" 
+                    href="#setting-password" 
+                    role="tab" 
+                    aria-controls="Setting User Password"
+                    class="nav-link">Password</a>
+            </li>
             <li class="nav-item"><a href="#" class="nav-link">Theme</a></li>
         </ul>
     </div>
