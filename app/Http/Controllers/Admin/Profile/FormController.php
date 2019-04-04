@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+//load the user model
 use App\User;
 
 class FormController extends Controller
@@ -27,23 +28,26 @@ class FormController extends Controller
         if ($validation->fails()) 
             return response()->json(['errors'=>$validation->errors()], 422);
         
+        //passed input continue to run update operation    
+        $user = User::find($r->input('id'));
+        
         //check the existance of avatar upload     
         if ($r->has('avatar')){    
             $file = $r->file('avatar');
             $filename = $r->input('username').'.'.$file->extension();
             $path = public_path('files/admin/users/');
-            $this->moveFile($file, $filename, $path);
+            $this->moveFile($file, $filename, $path, $user);
         }    
-        //passed input continue to run update operation    
-        $user = User::find($r->input('id'));
+        //Assign new data
         $user->name = $r->input('name');
         $user->email = $r->input('email');
-
+        
+        //validate the existing of file name
         if (isset($filename) && $filename!="")
             $user->avatar = $filename;
-
+        //save the changing
         if ($user->save()){
-            
+            //creating thumbnail
             if (isset($filename) && $filename!=""){
                 $data['avatar']=$filename; 
                 \Image::make($path.$filename)
@@ -51,11 +55,13 @@ class FormController extends Controller
                     ->save($path.'thumb-'.$filename);
                 $data['image']=$this->toBase64($path.'thumb-'.$filename);
             }
+            //return the success message
             $response =['status'=>'success',
                 'data'=>(isset($data)?$data:''), 
                 'message'=>''];
             return response()->json($response, 200);
         }
+        //return the failed message
         return response()->json(['status'=>'error', 'message'=>''], 200);
             
     }
@@ -65,14 +71,20 @@ class FormController extends Controller
      * @param string $filename
      * @return void
      */
-    private function moveFile($file, $filename, $path)
+    private function moveFile($file, $filename, $path, $user)
     {
         //validate upload file
         if (isset($file) && $file->isValid()){
             
-            //check file existing
+            //check the existing file refer to form input
             if (file_exists($path.$filename))
                 unlink($path.$filename);
+            //check the existing file refer to exist data
+            if (file_exists($path.$user->avatar))
+                unlink($path.$user->avatar);
+            //check the existing file refer to exist data (thumbnail)
+            if (file_exists($path.'thumb-'.$user->avatar))
+                unlink($path.'thumb-'.$user->avatar);
             
             //move the file to the server
             $file->move($path, $filename);
