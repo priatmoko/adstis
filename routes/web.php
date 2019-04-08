@@ -23,4 +23,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('profile', 'Admin\Profile\IndexController@index')->name('profile');
     Route::get('profile/setting', 'Admin\Profile\IndexController@setting')->name('profile-setting');
     Route::post('profile/store', 'Admin\Profile\FormController@store')->name('profile-store');
+    Route::post('profile/password', 'Admin\Profile\PwdController@change')->name('profile-change-pwd');
 });
