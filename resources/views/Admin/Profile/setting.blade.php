@@ -27,6 +27,7 @@
     <script src="{{asset('assets/modules/izitoast/js/iziToast.min.js')}}"></script>
     <script src="{{asset('js/postAjax.js')}}"></script>
     <script src="{{asset('assets/Admin/Profile/setting.js')}}"></script>
+    <script src="{{asset('assets/Admin/Profile/password.js')}}"></script>
     <script>
         //init setting
         initProfile();

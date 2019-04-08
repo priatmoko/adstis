@@ -27,7 +27,6 @@ class FormController extends Controller
         //check validataion result    
         if ($validation->fails()) 
             return response()->json(['errors'=>$validation->errors()], 422);
-        
         //passed input continue to run update operation    
         $user = User::find($r->input('id'));
         

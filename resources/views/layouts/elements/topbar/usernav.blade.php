@@ -21,7 +21,7 @@
         <a href="@if (Route::has('profile-setting')) {{route('profile-setting')}} @endif" class="dropdown-item has-icon">
             <i class="fas fa-cog"></i> Settings
         </a>
-        <a href="features-activities.html" class="dropdown-item has-icon">
+        <a href="{{url('profile/setting#setting-password')}}" class="dropdown-item has-icon">
             <i class="fas fa-key"></i> Change Password
         </a>
         <div class="dropdown-divider"></div>
