@@ -1,6 +1,10 @@
 ## ADSTIS
 
 Adstis is an opensource admin panel (dashboard) built in laravel and template stisla. It is modified laravel default authentication page. The Customization includes templates (dashboard design based on stisla), add username field, user profile management, change password, etc. Beside that there are some palnned customization to make us ease in web development like user authorization management, user menu management, etc, but it is still on progress. I imagine in building the foundation of admin panel, so if we have a project, we just need to make minor changing and focus on main features.
+
+<img src="https://raw.githubusercontent.com/priatmoko/image-repo/master/g115.png?token=AErIt4uMQxWfjP2IxZj5XhRYhDbzkEjwks5crDcuwA%3D%3D">
+
+
 ## Source
 Laravel framework www.laravel.com <br/>
 Stisla Admin panel www.getstisla.com
