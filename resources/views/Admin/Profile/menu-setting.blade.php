@@ -15,7 +15,7 @@
             <li class="nav-item"><a href="{{route('profile')}}" class="nav-link">Profile</a></li>
             <li class="nav-item">
                 <!-- <a href="{{route('profile-setting')}}" class="nav-link active">Setting</a> -->
-                <a id="tab-setting" 
+                <a id="setting-user-tab" 
                     data-toggle="tab" 
                     href="#setting-user" 
                     role="tab" 
@@ -24,9 +24,9 @@
                     class="nav-link active">Setting</a>
             </li>
             <li class="nav-item">
-                <a id="tab-password" 
+                <a id="setting-password-tab" 
+                    href="#setting-password"
                     data-toggle="tab" 
-                    href="#setting-password" 
                     role="tab" 
                     aria-controls="Setting User Password"
                     class="nav-link">Password</a>
