@@ -43,7 +43,7 @@ php artisan serve
 ### Help
 
 1. Directory structure
-<img src="https://raw.githubusercontent.com/priatmoko/image-repo/master/directory.png?token=AErIt10Cy16DpGC-pqSb0i9Wce01cSBOks5crDkMwA%3D%3D">
+<img src="https://github.com/priatmoko/image-repo/blob/master/directory.png?raw=true">
 
 2. Codes
 <p>
