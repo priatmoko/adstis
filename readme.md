@@ -43,3 +43,44 @@ php artisan serve
 ### Help
 
 1. Directory structure
+<img src="https://raw.githubusercontent.com/priatmoko/image-repo/master/directory.png?token=AErIt10Cy16DpGC-pqSb0i9Wce01cSBOks5crDkMwA%3D%3D">
+
+2. Codes
+<p>
+    Controller method calling blade template
+</p>
+
+```
+ /**
+     * Display main panel of user profile
+     * @return void
+     */
+    public function index()
+    {
+        $breadcrumb = ['User profile'=>''];
+        $title = 'User Profile';
+        return view('Admin.Profile.index')
+                ->with('breadcrumb', $breadcrumb);
+    }
+```
+Inside blade template, main template on blade, It will generate main page. 
+
+```
+@extends('layouts.master-admin')
+@section('component')
+<!-- your code here-->
+@endsection
+```
+
+Generate page like this 
+<img style="width:200" src="https://github.com/priatmoko/image-repo/blob/master/home%201.png?raw=true">
+
+Inside blade template, calling component card, It will generate bootstrap card component
+
+```
+@component('layouts.elements.others.card',
+            ['title'=>'User Detail'])
+@endcomponent            
+```
+Generate page like this, card Jump to, card User Profile Setting 
+<img style="width:200" src="https://github.com/priatmoko/image-repo/blob/master/setting%20user.png?raw=true">
