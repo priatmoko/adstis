@@ -36,7 +36,11 @@ DB_PASSWORD=your_password
 ```
 composer install
 ```
-5. Run command php artisan serve to run the result on your browser
+5. Run command php artisan migrate to create database
+```
+php artisan migrate
+```
+6. Run command php artisan serve to run the result on your browser
 ```
 php artisan serve
 ```
