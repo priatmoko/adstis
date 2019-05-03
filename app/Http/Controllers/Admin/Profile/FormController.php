@@ -22,7 +22,7 @@ class FormController extends Controller
             'name'=>'required|max:191',
             'id'=>'required',
             'username'=>'required|alpha_dash',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:users,email,'.$r->input('id'),
             'avatar'=>'image|max:1024']);
         //check validataion result    
         if ($validation->fails()) 
