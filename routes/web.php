@@ -27,5 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('profile/password', 'Admin\Profile\PwdController@change')->name('profile-change-pwd');
 
     Route::get('apps', 'Admin\Apps\IndexController@index')->name('apps');
+    Route::get('apps/create', 'Admin\Apps\FormController@create')->name('apps.create');
+    Route::post('apps/ajax/store', 'Admin\Apps\FormController@store')->name('apps.ajax.store');
 
 });
