@@ -93,6 +93,105 @@
                         </div>
                     </div>
                 </div>    
+                <div class="form-group row align-items-center">
+                    <label for="url" class="form-control-label text-md-right col-md-3">
+                        Url / Link Application
+                        <a href="javascript:;"
+                            data-html="true" 
+                            data-toggle="popover" 
+                            data-trigger="focus" 
+                            data-content="
+                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
+                                <b>Database info</b> : Users.username">
+                            <i class="far fa-question-circle"></i>
+                            </a>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" id="url" name="url"  
+                            class="form-control {{ $errors->has('url') ? ' is-invalid' : '' }}" 
+                            required  tabindex=1/>
+                        <div class="invalid-feedback">
+                            @if ($errors->has('url'))
+                                {{ $errors->first('url') }}</strong>
+                            @endif
+                        </div>
+                    </div>
+                </div>    
+                <div class="form-group row align-items-center">
+                    <label for="color" class="form-control-label text-md-right col-md-3">
+                        Color
+                        <a href="javascript:;"
+                            data-html="true" 
+                            data-toggle="popover" 
+                            data-trigger="focus" 
+                            data-content="
+                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
+                                <b>Database info</b> : Users.username">
+                            <i class="far fa-question-circle"></i>
+                            </a>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" id="color" name="color"  
+                            class="form-control {{ $errors->has('color') ? ' is-invalid' : '' }}" 
+                            required  tabindex=1/>
+                        <div class="invalid-feedback">
+                            @if ($errors->has('color'))
+                                {{ $errors->first('color') }}</strong>
+                            @endif
+                        </div>
+                    </div>
+                </div>    
+                <div class="form-group row align-items-center">
+                    <label for="icon" class="form-control-label text-md-right col-md-3">
+                        Icon
+                        <a href="javascript:;"
+                            data-html="true" 
+                            data-toggle="popover" 
+                            data-trigger="focus" 
+                            data-content="
+                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
+                                <b>Database info</b> : Users.username">
+                            <i class="far fa-question-circle"></i>
+                            </a>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" id="icon" name="icon"  
+                            class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" 
+                            required  tabindex=1/>
+                        <div class="invalid-feedback">
+                            @if ($errors->has('icon'))
+                                {{ $errors->first('icon') }}</strong>
+                            @endif
+                        </div>
+                    </div>
+                </div>    
+                <div class="form-group row align-items-center">
+                    <label for="desc" class="form-control-label text-md-right col-md-3">
+                        Description
+                        <a href="javascript:;"
+                            data-html="true" 
+                            data-toggle="popover" 
+                            data-trigger="focus" 
+                            data-content="
+                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
+                                <b>Database info</b> : Users.username">
+                            <i class="far fa-question-circle"></i>
+                            </a>
+                    </label>
+                    <div class="col-md-8">
+                        <textarea id="desc" name="desc"  
+                            class="form-control {{ $errors->has('desc') ? ' is-invalid' : '' }}" 
+                            required  tabindex=1></textarea>
+                        <div class="invalid-feedback">
+                            @if ($errors->has('desc'))
+                                {{ $errors->first('desc') }}</strong>
+                            @endif
+                        </div>
+                    </div>
+                </div>    
+                @slot('footer')
+                    <button type="submit" class="btn btn-primary">Save</button>
+                @endslot
             @endcomponent
         </form>
 
