@@ -61,10 +61,12 @@
                     <div class="col-md-8">
                         <input type="text" id="parent" name="parent"  
                             class="form-control {{ $errors->has('parent') ? ' is-invalid' : '' }}" 
-                            required  tabindex=1/>
+                            tabindex=2/>
                         <div class="invalid-feedback">
                             @if ($errors->has('parent'))
                                 {{ $errors->first('parent') }}</strong>
+                            @else
+                                {{__('Please fill in menu parent')}}
                             @endif
                         </div>
                     </div>
@@ -85,7 +87,7 @@
                     <div class="col-md-8">
                         <input type="text" id="parent" name="parent"  
                             class="form-control {{ $errors->has('parent') ? ' is-invalid' : '' }}" 
-                            required  tabindex=1/>
+                            tabindex=3/>
                         <div class="invalid-feedback">
                             @if ($errors->has('parent'))
                                 {{ $errors->first('parent') }}</strong>
@@ -109,10 +111,12 @@
                     <div class="col-md-8">
                         <input type="text" id="url" name="url"  
                             class="form-control {{ $errors->has('url') ? ' is-invalid' : '' }}" 
-                            required  tabindex=1/>
+                            required  tabindex=4/>
                         <div class="invalid-feedback">
                             @if ($errors->has('url'))
                                 {{ $errors->first('url') }}</strong>
+                            @else
+                                {{__('Please fill in Url / Link Application')}}
                             @endif
                         </div>
                     </div>
@@ -133,7 +137,7 @@
                     <div class="col-md-8">
                         <input type="text" id="color" name="color"  
                             class="form-control {{ $errors->has('color') ? ' is-invalid' : '' }}" 
-                            required  tabindex=1/>
+                            tabindex=5/>
                         <div class="invalid-feedback">
                             @if ($errors->has('color'))
                                 {{ $errors->first('color') }}</strong>
@@ -157,7 +161,7 @@
                     <div class="col-md-8">
                         <input type="text" id="icon" name="icon"  
                             class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" 
-                            required  tabindex=1/>
+                            tabindex=6/>
                         <div class="invalid-feedback">
                             @if ($errors->has('icon'))
                                 {{ $errors->first('icon') }}</strong>
@@ -181,7 +185,7 @@
                     <div class="col-md-8">
                         <textarea id="desc" name="desc"  
                             class="form-control {{ $errors->has('desc') ? ' is-invalid' : '' }}" 
-                            required  tabindex=1></textarea>
+                            tabindex=7></textarea>
                         <div class="invalid-feedback">
                             @if ($errors->has('desc'))
                                 {{ $errors->first('desc') }}</strong>
@@ -200,7 +204,11 @@
     @endcomponent
 @endsection
 @section('scripts')
+    <script src="{{asset('js/postAjax.js')}}"></script>
     <script src="{{asset('assets/Admin/Apps/create.js')}}"></script>
     <script>
+        $(document).ready(function(){
+            init();
+        });
     </script>
 @endsection
