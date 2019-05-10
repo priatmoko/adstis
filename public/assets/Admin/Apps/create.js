@@ -11,4 +11,9 @@ var saveApps = function(){
     if ($('#app-form').postValidate()===false){
         return false;
     }
+    $('#user-profile').postAjax({
+        success:function(r){
+            console.log(r);
+        }
+    });
 }
