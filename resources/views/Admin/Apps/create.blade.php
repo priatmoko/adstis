@@ -11,21 +11,21 @@
                 ['title'=>'Application / Menu Configuration'])
                 <p class="text-muted">General settings such as name, photo profile, etc</p>
                 <div class="form-group row align-items-center">
-                    <label for="site-title" class="form-control-label text-md-right col-md-3">
+                    <label for="name" class="form-control-label text-md-right col-md-3">
                         Name / ID
                         <a href="javascript:;"
                             data-html="true" 
                             data-toggle="popover" 
                             data-trigger="focus" 
                             data-content="
-                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
-                                <b>Database info</b> : Users.username">
+                                <b>Name</b>, Write the menu or application name here. It will represent Application <br/> 
+                                <b>Database info</b> : Apps.name">
                             <i class="far fa-question-circle"></i>
                             </a>
                     </label>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <input type="text" id="name" name="name"  
-                            class="form-control {{ $errors->has('id') ? ' is-invalid' : '' }}" 
+                            class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" 
                             required  tabindex=1/>
                         <div class="invalid-feedback">
                             @if ($errors->has('name'))
@@ -35,7 +35,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <input type="text" id="id" name="id"  
                             class="form-control {{ $errors->has('id') ? ' is-invalid' : '' }}" readonly/>
                         <div class="invalid-feedback">
@@ -53,8 +53,8 @@
                             data-toggle="popover" 
                             data-trigger="focus" 
                             data-content="
-                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
-                                <b>Database info</b> : Users.username">
+                                <b>Menu Parent</b>, Grouping the menu <br/> 
+                                <b>Database info</b> : Apps.parent">
                             <i class="far fa-question-circle"></i>
                             </a>
                     </label>
@@ -101,8 +101,8 @@
                             data-toggle="popover" 
                             data-trigger="focus" 
                             data-content="
-                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
-                                <b>Database info</b> : Users.username">
+                                <b>Url / Link Application</b>, Prefix URL Link direction to application <br/> 
+                                <b>Database info</b> : Apps.url">
                             <i class="far fa-question-circle"></i>
                             </a>
                     </label>
@@ -125,8 +125,8 @@
                             data-toggle="popover" 
                             data-trigger="focus" 
                             data-content="
-                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
-                                <b>Database info</b> : Users.username">
+                                <b>Color</b>, Color represent application <br/> 
+                                <b>Database info</b> : Apps.color">
                             <i class="far fa-question-circle"></i>
                             </a>
                     </label>
@@ -149,8 +149,8 @@
                             data-toggle="popover" 
                             data-trigger="focus" 
                             data-content="
-                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
-                                <b>Database info</b> : Users.username">
+                                <b>Icon</b>, Icon represent application <br/> 
+                                <b>Database info</b> : Apps.icon">
                             <i class="far fa-question-circle"></i>
                             </a>
                     </label>
@@ -173,7 +173,7 @@
                             data-toggle="popover" 
                             data-trigger="focus" 
                             data-content="
-                                <b>Username</b>, it is your username. You can sign in using this username beside email <br/> 
+                                <b>Description</b>, Describe the usage of application or everything relevant <br/> 
                                 <b>Database info</b> : Users.username">
                             <i class="far fa-question-circle"></i>
                             </a>
@@ -190,10 +190,17 @@
                     </div>
                 </div>    
                 @slot('footer')
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="float-md-right">
+                        <button type="submit" class="btn btn-icon icon-right btn-info"  tabindex=6> <i class="fa fa-save"></i> &nbsp; Save</button>
+                    </div>
                 @endslot
             @endcomponent
         </form>
 
     @endcomponent
+@endsection
+@section('scripts')
+    <script src="{{asset('assets/Admin/Apps/create.js')}}"></script>
+    <script>
+    </script>
 @endsection
