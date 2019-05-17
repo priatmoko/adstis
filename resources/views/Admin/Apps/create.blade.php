@@ -26,7 +26,7 @@
                     <div class="col-md-6">
                         <input type="text" id="name" name="name"  
                             class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" 
-                            required  tabindex=1/>
+                            required  tabindex='1'/>
                         <div class="invalid-feedback">
                             @if ($errors->has('name'))
                                 {{ $errors->first('name') }}</strong>
@@ -61,7 +61,7 @@
                     <div class="col-md-8">
                         <input type="text" id="parent" name="parent"  
                             class="form-control {{ $errors->has('parent') ? ' is-invalid' : '' }}" 
-                            tabindex=2/>
+                            tabindex='2'/>
                         <div class="invalid-feedback">
                             @if ($errors->has('parent'))
                                 {{ $errors->first('parent') }}</strong>
@@ -72,7 +72,7 @@
                     </div>
                 </div>    
                 <div class="form-group row align-items-center">
-                    <label for="parent" class="form-control-label text-md-right col-md-3">
+                    <label for="node_name" class="form-control-label text-md-right col-md-3">
                         Node Name
                         <a href="javascript:;"
                             data-html="true" 
@@ -85,12 +85,12 @@
                             </a>
                     </label>
                     <div class="col-md-8">
-                        <input type="text" id="parent" name="parent"  
-                            class="form-control {{ $errors->has('parent') ? ' is-invalid' : '' }}" 
-                            tabindex=3/>
+                        <input type="text" id="node_name" name="node_name"  
+                            class="form-control {{ $errors->has('node_name') ? ' is-invalid' : '' }}" 
+                            tabindex='3'/>
                         <div class="invalid-feedback">
-                            @if ($errors->has('parent'))
-                                {{ $errors->first('parent') }}</strong>
+                            @if ($errors->has('node_name'))
+                                {{ $errors->first('node_name') }}</strong>
                             @endif
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                     <div class="col-md-8">
                         <input type="text" id="url" name="url"  
                             class="form-control {{ $errors->has('url') ? ' is-invalid' : '' }}" 
-                            required  tabindex=4/>
+                            required  tabindex='4'/>
                         <div class="invalid-feedback">
                             @if ($errors->has('url'))
                                 {{ $errors->first('url') }}</strong>
@@ -137,7 +137,7 @@
                     <div class="col-md-8">
                         <input type="text" id="color" name="color"  
                             class="form-control {{ $errors->has('color') ? ' is-invalid' : '' }}" 
-                            tabindex=5/>
+                            tabindex='5'/>
                         <div class="invalid-feedback">
                             @if ($errors->has('color'))
                                 {{ $errors->first('color') }}</strong>
@@ -161,7 +161,7 @@
                     <div class="col-md-8">
                         <input type="text" id="icon" name="icon"  
                             class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" 
-                            tabindex=6/>
+                            tabindex='6'/>
                         <div class="invalid-feedback">
                             @if ($errors->has('icon'))
                                 {{ $errors->first('icon') }}</strong>
@@ -185,7 +185,7 @@
                     <div class="col-md-8">
                         <textarea id="desc" name="desc"  
                             class="form-control {{ $errors->has('desc') ? ' is-invalid' : '' }}" 
-                            tabindex=7></textarea>
+                            tabindex='7'></textarea>
                         <div class="invalid-feedback">
                             @if ($errors->has('desc'))
                                 {{ $errors->first('desc') }}</strong>
@@ -195,7 +195,7 @@
                 </div>    
                 @slot('footer')
                     <div class="float-md-right">
-                        <button type="submit" class="btn btn-icon icon-right btn-info"  tabindex=6> <i class="fa fa-save"></i> &nbsp; Save</button>
+                        <button type="submit" class="btn btn-icon icon-right btn-info"  tabindex='8'> <i class="fa fa-save"></i> &nbsp; Save</button>
                     </div>
                 @endslot
             @endcomponent

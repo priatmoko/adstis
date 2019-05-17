@@ -8,10 +8,10 @@ var init = function(){
     });
 }
 var saveApps = function(){
-    if ($('#app-form').postValidate()===false){
-        return false;
-    }
-    $('#user-profile').postAjax({
+    // if ($('#app-form').postValidate()===false){
+    //     return false;
+    // }
+    $('#app-form').postAjax({
         success:function(r){
             console.log(r);
         }
