@@ -31,18 +31,16 @@ class FormController extends Controller
 
         if ($validation->fails()) 
             return response()->json(['errors'=>$validation->errors()], 422);
+        $apps = new Apps;
+        $apps->name = $r->input('name');
+        $apps->parent = $r->input('parent');
+        $apps->node_name = $r->input('node_name');
+        $apps->url = $r->input('url');
+        $apps->color = $r->input('color');
+        $apps->icon = $r->input('icon');
+        $apps->desc = $r->input('desc');
+        $apps->save();
         
-        //passing rule go to next step     
-        $apps = \Apps::create([
-            'name'=>$r->input('name'),
-            'parent'=>$r->input('parent'),
-            'node_name'=>$r->input('node_name'),
-            'url'=>$r->input('url'),
-            'color'=>$r->input('color'),
-            'icon'=>$r->input('icon'),
-            'desc'=>$r->input('desc'),
-        ]);
-        //success
         return response()->json(['notify'=>'y']);
     }
 

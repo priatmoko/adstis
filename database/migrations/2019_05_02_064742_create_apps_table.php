@@ -15,14 +15,14 @@ class CreateAppsTable extends Migration
     {
         Schema::create('apps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('parent');
-            $table->integer('sorter');
+            $table->bigInteger('parent')->nullable();
+            $table->integer('sorter')->nullable();
             $table->string('name');
-            $table->string('node_name');
-            $table->mediumText('desc');
+            $table->string('node_name')->nullable();
+            $table->mediumText('desc')->nullable();
             $table->string('url');
-            $table->string('color');
-            $table->string('icon');
+            $table->string('color')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

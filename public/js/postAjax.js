@@ -139,6 +139,7 @@ $.fn.postValidate = function(){
             }
             result = false;
         }else{
+            console.log(form.elements.length);
             for (i=0; i< form.elements.length; i++) form.elements[i].classList.remove('is-invalid');
         }
         form.classList.add('was-validated');
