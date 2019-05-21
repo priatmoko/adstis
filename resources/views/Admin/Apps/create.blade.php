@@ -72,6 +72,30 @@
                     </div>
                 </div>    
                 <div class="form-group row align-items-center">
+                    <label for="sorter" class="form-control-label text-md-right col-md-3">
+                        Sorter Number
+                        <a href="javascript:;"
+                            data-html="true" 
+                            data-toggle="popover" 
+                            data-trigger="focus" 
+                            data-content="
+                                <b>Sorter Number</b>, Sort application menu by entering number sorter <br/> 
+                                <b>Database info</b> : Users.sorter">
+                            <i class="far fa-question-circle"></i>
+                            </a>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="number" id="sorter" name="sorter"  
+                            class="form-control {{ $errors->has('sorter') ? ' is-invalid' : '' }}" 
+                            tabindex='3'/>
+                        <div class="invalid-feedback">
+                            @if ($errors->has('sorter'))
+                                {{ $errors->first('sorter') }}</strong>
+                            @endif
+                        </div>
+                    </div>
+                </div>    
+                <div class="form-group row align-items-center">
                     <label for="node_name" class="form-control-label text-md-right col-md-3">
                         Node Name
                         <a href="javascript:;"
@@ -204,6 +228,7 @@
     @endcomponent
 @endsection
 @section('scripts')
+    <script src="{{asset('assets/modules/izitoast/js/iziToast.min.js')}}"></script>
     <script src="{{asset('js/postAjax.js')}}"></script>
     <script src="{{asset('assets/Admin/Apps/create.js')}}"></script>
     <script>
@@ -211,4 +236,7 @@
             init();
         });
     </script>
+@endsection
+@section('css')
+    <link rel="stylesheet" href="{{asset('assets/modules/izitoast/css/iziToast.min.css')}}" />
 @endsection

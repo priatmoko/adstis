@@ -15,7 +15,11 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('Admin.Apps.create');
+        $breadcrumb = ['Application Management'=>route('apps'), 'Register New Application'=>''];
+        $title = 'Register New Application';
+        return view('Admin.Apps.create')
+                ->with('breadcrumb', $breadcrumb)
+                ->with('title', $title);
     }
     /**
      * Store data
@@ -39,9 +43,10 @@ class FormController extends Controller
         $apps->color = $r->input('color');
         $apps->icon = $r->input('icon');
         $apps->desc = $r->input('desc');
+        $apps->sorter = $r->input('sorter');
         $apps->save();
         
-        return response()->json(['notify'=>'y']);
+        return response()->json(['status'=>'success']);
     }
 
 }
