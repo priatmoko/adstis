@@ -13,6 +13,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('Admin.Apps.index');
+        $breadcrumb = ['Application Management'=>''];
+        $title = 'Application Management';
+        return view('Admin.Apps.index')
+                ->with('title', $title)
+                ->with('breadcrumb', $breadcrumb);
     }
 }

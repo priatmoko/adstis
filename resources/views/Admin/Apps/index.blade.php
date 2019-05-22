@@ -6,8 +6,7 @@
             'desc'=>'Page for doing some operation like register, update, delete Application, manage menu',
             'breadcrumb'=> (isset($breadcrumb)?$breadcrumb:'')])
         @component('layouts.elements.others.card',
-            ['title'=>'Application List',
-            'body_class'=>'p-0'])   
+            ['title'=>'Application List'])   
             @slot('header_action')
                 <a class="badge badge-primary" href="{{route('apps.create')}}">&nbsp;<i class="fa fa-plus"></i> Add&nbsp;</a>
             @endslot 
