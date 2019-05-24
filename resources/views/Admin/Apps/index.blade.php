@@ -7,20 +7,39 @@
             'breadcrumb'=> (isset($breadcrumb)?$breadcrumb:'')])
         @component('layouts.elements.others.card',
             ['title'=>'Application List'])   
+            <p class="text-muted">Write the keywords bellow to display list of registered application</p>
             @slot('header_action')
                 <a class="badge badge-primary" href="{{route('apps.create')}}">&nbsp;<i class="fa fa-plus"></i> Add&nbsp;</a>
             @endslot 
-
-            <table class="table table-striped" id="sortable-table">
+            <form id="app-index" method='POST' novalidate action="{{route('apps.ajax.getList')}}">
+                @csrf
+                <div class="form-group row align-items-center">
+                    <label for="name" class="form-control-label col-md-2">
+                        Name 
+                    </label>
+                    <div class="col-md-3">
+                        <input type="text" id="name" name="name" class="form-control form-control-sm" />
+                    </div>
+                </div>
+                <div class="form-group row align-items-center">
+                    <label for="name" class="form-control-label col-md-2">
+                        &nbsp; 
+                    </label>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-sm">Display</button>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-striped" id="table-apps">
                 <thead>
                     <tr>
-                        <th class="text-center">
+                        <th class="text-center" data-field="icon">
                             Icon
                         </th>
-                        <th>Name</th>
-                        <th>URL Link</th>
-                        <th>Sorter</th>
-                        <th>Desc</th>
+                        <th data-field="name">Name</th>
+                        <th data-field="url">URL Link</th>
+                        <th data-field="sorter">Sorter</th>
+                        <th data-field="desc">Desc</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +77,9 @@
     @endcomponent
 @endsection
 @section('scripts')
+<script src="{{asset('js/postAjax.js')}}"></script>
+    <script src="{{asset('assets/Admin/Apps/index.js')}}"></script>
     <script>
-        
+        init();
     </script>
 @endsection
