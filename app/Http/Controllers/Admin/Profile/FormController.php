@@ -21,8 +21,8 @@ class FormController extends Controller
         $validation =\Validator::make($r->all(), [
             'name'=>'required|max:191',
             'id'=>'required',
-            'username'=>'required',
-            'email'=>'required|email',
+            'username'=>'required|alpha_dash',
+            'email'=>'required|email|unique:users,email,'.$r->input('id'),
             'avatar'=>'image|max:1024']);
         //check validataion result    
         if ($validation->fails()) 
@@ -79,7 +79,7 @@ class FormController extends Controller
             if (file_exists($path.$filename))
                 unlink($path.$filename);
             //check the existing file refer to exist data
-            if (file_exists($path.$user->avatar))
+            if ($user->avatar!="" && file_exists($path.$user->avatar))
                 unlink($path.$user->avatar);
             //check the existing file refer to exist data (thumbnail)
             if (file_exists($path.'thumb-'.$user->avatar))

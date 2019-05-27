@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group col-6">
                             <label for="username">{{__('Username')}}</label>
-                            <input id="username" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="username" value="{{ old('name') }}" required autofocus />
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus />
                             <div class="invalid-feedback">
                                 @if ($errors->has('username'))
                                     {{ $errors->first('username') }}

@@ -3,7 +3,7 @@
     <div class="text-center">
         <img alt="image" 
             id ="avatar-image"
-            src="{{file_exists(public_path('files/admin/users/').\Auth::user()->avatar)?asset('files/admin/users/thumb-'.\Auth::user()->avatar):asset('assets/img/avatar/avatar-1.png')}}" 
+            src="{{\Auth::user()->avatar!="" && file_exists(public_path('files/admin/users/').\Auth::user()->avatar)?asset('files/admin/users/thumb-'.\Auth::user()->avatar):asset('assets/img/avatar/avatar-1.png')}}" 
             class="rounded-circle author-box-picture" 
             style="width:100px;">
         <div class="clearfix"></div>
