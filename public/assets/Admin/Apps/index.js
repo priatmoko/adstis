@@ -37,7 +37,7 @@ var injectTable = function(obj){
         $.each(v, function(id, iv) {
             datas += 'data-' + id + '="' + iv + '"';
         });
-        tr += "<tr id='act_" + i + "' " + datas + " class='context-menu' title='Right Click to choose operation. &#013;Sequence : &#013;"+v.caseqn+"'>";
+        tr += "<tr id='act_" + i + "' " + datas + " class='context-menu' title='Right Click to choose operation. &#013;Menu  : &#013;"+v.name+" - "+v.id+"'>";
         $.each(td, function(index, field) {
             tr += "<td style='" + $(this).attr('style') + "' class='" + $(this).attr('class') + "'>";
             if ($(this).data('field')=='icon'){
