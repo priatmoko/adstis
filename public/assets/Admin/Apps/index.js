@@ -13,7 +13,6 @@ var init = function(){
 var displayIndex = function(){
     $('#app-index').postAjax({
         success:function(r){
-            
             if (r.status=="success"){
                 injectTable(r.d);
             }else{

@@ -73,14 +73,6 @@
 <script src="{{asset('assets/Admin/Apps/index.js')}}"></script>
 <script>
     $(document).ready(function(){
-        $('#example').DataTable( {
-            "scrollY": 400,
-            "scrollX": true,
-            "paging"    : false,
-            "searching" : false,
-            "ordering"  : false,
-            "info"      : false,
-        } );
         init();
     });
     
