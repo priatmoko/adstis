@@ -67,13 +67,8 @@
         @endcomponent
     @endcomponent
 @endsection
-@section('css')
-<link rel="stylesheet" href="{{asset('assets/modules/datatables/DataTables-1.10.16/css/jquery.dataTables.min.css')}}" />
-<link rel="stylesheet" href="{{asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}" />
-@endsection
+
 @section('scripts')
-<script src="{{asset('assets/modules/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('js/postAjax.js')}}"></script>
 <script src="{{asset('assets/Admin/Apps/index.js')}}"></script>
 <script>
