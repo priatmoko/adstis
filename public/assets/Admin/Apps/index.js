@@ -7,10 +7,13 @@ var init = function(){
         displayIndex();
     });
     $("#table-1").dataTable({
-        "columnDefs": [
-          { "sortable": false, "targets": [2,3] }
-        ]
-      });
+        "scrollX"   : true,
+        "scrollY"   : 400,
+        "paging"    : false,
+        "ordering"  : false,
+        "info"      : false,
+        "searching" : false
+    });
 }
 /**
  * displaying list of registered application
