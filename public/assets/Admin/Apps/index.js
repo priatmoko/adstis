@@ -6,6 +6,11 @@ var init = function(){
         e.preventDefault();
         displayIndex();
     });
+    $("#table-1").dataTable({
+        "columnDefs": [
+          { "sortable": false, "targets": [2,3] }
+        ]
+      });
 }
 /**
  * displaying list of registered application
