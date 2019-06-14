@@ -30,42 +30,47 @@
                     </div>
                 </div>
             </form>
-            <table class="table table-striped" id="table-apps">
-                <thead>
-                    <tr>
-                        <th class="text-center" data-field="icon">
-                            Icon
-                        </th>
-                        <th data-field="name">Name</th>
-                        <th data-field="url">URL Link</th>
-                        <th data-field="sorter">Sorter</th>
-                        <th data-field="desc">Desc</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center" colspan="5" width="100%">
-                            Empty
-                        </td>
-                    </tr>
-                    <!-- <tr>
-                        <td class="text-center">
-                            <div class="badge badge-info"><i class="fas fa-th"></i></div>
-                        </td>
-                        <td>Redesign homepage</td>
-                        <td class="align-middle">
-                            Apps/test
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>2018-04-10</td>
-                    </tr> -->
-                </tbody>
-            </table>
-
-
             <div class="table-responsive">
+                <table class="table table-striped" id="table-apps">
+                    <thead>
+                        <tr>
+                            <th class="text-center" data-field="icon">
+                                Icon
+                            </th>
+                            <th data-field="name">Name</th>
+                            <th data-field="url">URL Link</th>
+                            <th data-field="sorter">Sorter</th>
+                            <th data-field="desc">Desc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center" colspan="5" width="100%">
+                                Empty
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <!-- <tr>
+                            <td class="text-center">
+                                <div class="badge badge-info"><i class="fas fa-th"></i></div>
+                            </td>
+                            <td>Redesign homepage</td>
+                            <td class="align-middle">
+                                Apps/test
+                            </td>
+                            <td>
+                                1
+                            </td>
+                            <td>2018-04-10</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+
+            
                       <table class="table table-striped table-bordered" id="table-1">
                         <thead>                                 
                           <tr>
