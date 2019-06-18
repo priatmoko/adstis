@@ -1,10 +1,10 @@
-var table = $("#table-apps").DataTable({
+var conf = {
     "scrollY"   : 400,
     "paging"    : false,
     "ordering"  : false,
     "info"      : false,
     "searching" : false
-});
+}
 /**
  * Initial event
  */
@@ -54,17 +54,24 @@ var injectTable = function(obj){
     var td = $('#table-apps thead tr th');
     var tbody = $('#table-apps tbody');
     var column = arrangeCol(td);
-    table.columns = column;
-    var rows = new Array;
+    conf.columns = column;
+    // console.log(table.columns);
+    var records = new Array;
     $.each(obj, function(i, v) {
-        var row = new Array;
         var person = new Object();
         $.each(td, function(index, field) {
             field = $(this).data('field');
-            person[field] = v[field]; 
+            if (field=='icon'){
+                if (v[$(this).data('field')]==null)
+                    person[field] = "<i class='fa fa-th'></i>";
+                else
+                    person[field] = "<i class='fa "+v[$(this).data('field')]+"'></i>";    
+            }else{
+                person[field] = v[field];
+            }
+             
         });
-        rows.push(person);
-        console.log(person);
+        records.push(person);
         // datas = "";
         // $.each(v, function(id, iv) {
         //     datas += 'data-' + id + '="' + iv + '"';
@@ -88,9 +95,10 @@ var injectTable = function(obj){
         // });
         // tr += "</tr>";
     });
+    table = $("#table-apps").DataTable(conf);
     table.clear();
-    table.rows.add(rows).draw();
-    console.log(rows);
+    table.rows.add(records).draw();
+    // console.log(records);
     // tbody.html(tr);
     
     // $("#table-apps").DataTable({

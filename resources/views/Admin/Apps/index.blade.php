@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center" colspan="5" width="100%">
+                            <td class="text-center">
                                 Empty
                             </td>
                             <td></td>
